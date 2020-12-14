@@ -1,0 +1,16 @@
+from sklearn import datasets
+from sklearn import svm
+digits=datasets.load_digits();
+print("Array representation for single handwritten digit:")
+print(digits.data[18])
+print("Label of a handwritten digit:")
+print(digits.target[18])
+print("Total no of digits in dataset:")
+print(digits.data.shape)
+print("Training the model")
+classifier=svm.SVC(gamma=0.001,C=100.)
+classifier.fit(digits.data[:-2],digits.target[:-2])
+print("Testing the algorithm by predicting the last two digits in the dataset:")
+classifier.predict(digits.data[-2:])
+print("Verifying the accuracy of the model by accessing last two digits directly from dataset")
+print(digits.data[-2:],digits.target[-2:])
